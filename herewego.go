@@ -238,6 +238,10 @@ func main() {
   defer printTwo()
   printOne()
 
+
+  fmt.Println(safeDiv(3,0))
+  fmt.Println(safeDiv(3,2))
+
 ////////////////////////////////////////////////////
 // NESTED FUNCTIONS VIA ClOSURES
 ////////////////////////////////////////////////////
@@ -307,3 +311,18 @@ func factorial(num int) int {
 
 func printOne(){fmt.Println(1)}
 func printTwo(){fmt.Println(2)}
+
+
+////////////////////////////////////////////////////
+// SAFE FUNCTIONS
+////////////////////////////////////////////////////
+
+func safeDiv(num1, num2 int) int{
+  defer func() {
+    fmt.Println(recover())
+  }()
+
+  solution := num1 / num2
+  return solution
+
+}
