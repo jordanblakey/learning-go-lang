@@ -190,6 +190,7 @@ func main() {
 
   fmt.Println("numSlice2[0] =", numSlice2[0])
   fmt.Println("numSlice2[1] =", numSlice2[1])
+  fmt.Println("numSlice[:2] =", numSlice[:2])
 
 ////////////////////////////////////////////////////
 // SLICES
