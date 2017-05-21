@@ -133,7 +133,7 @@ func main() {
 
   if yourAge >= 16 {
     fmt.Println("You can drive.")
-  } else if {
+  } else if yourAge >= 18 {
     fmt.Println("You can drive, and vote. Woohoo!")
   } else {
     fmt.Println("You can't drive.")
@@ -149,6 +149,52 @@ func main() {
     case 18: fmt.Println("Go vote!")
     default: fmt.Println("Go have fun!")
   }
+
+////////////////////////////////////////////////////
+// ARRAYS
+////////////////////////////////////////////////////
+
+  var favNums2[5] float64
+  favNums2[0] = 163
+  favNums2[1] = 78557
+  favNums2[2] = 691
+  favNums2[3] = 3.141
+  favNums2[4] = 1.618
+
+  fmt.Println(favNums2[3])
+
+  // Alternative array syntax
+
+////////////////////////////////////////////////////
+// FOR EACH LOOPS
+////////////////////////////////////////////////////
+
+  favNums3 := [5]float64 {1, 2, 3, 4, 5}
+
+  for i, value := range favNums3 {
+    fmt.Println(value, i)
+  }
+
+  for _, value := range favNums3 { // Using and underscore for the index variable loops through with no access to the index number of the value
+    fmt.Println(value)
+  }
+
+////////////////////////////////////////////////////
+// SLICES
+////////////////////////////////////////////////////
+
+  // Create a new arrray by slicing from an existing array
+
+  numSlice := []int {5, 4, 3, 2, 1}
+  numSlice2 := numSlice[3:5]
+
+  fmt.Println("numSlice2[0] =", numSlice2[0])
+  fmt.Println("numSlice2[1] =", numSlice2[1])
+
+////////////////////////////////////////////////////
+// SLICES
+////////////////////////////////////////////////////
+
 
   // END FUNC MAIN
 }
