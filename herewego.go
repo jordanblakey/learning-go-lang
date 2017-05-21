@@ -252,6 +252,12 @@ func main() {
   y := 0
   changeYValNow(&y)
   fmt.Println("y =", y)
+  fmt.Println("Memory Address for y =", &y)
+
+  zPtr := new(int)
+  changeZValNow(zPtr)
+
+  fmt.Println("z =", *zPtr)
 
 ////////////////////////////////////////////////////
 // NESTED FUNCTIONS VIA ClOSURES
@@ -360,4 +366,8 @@ func safeDiv(num1, num2 int) int{
 
   func changeYValNow(y *int) {
     *y = 2
+  }
+
+  func changeZValNow(zPtr *int) {
+    *zPtr = 100
   }
