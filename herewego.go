@@ -229,7 +229,14 @@ func main() {
   fmt.Println(subtractThem(1,2,3,4,5))
 
   // RECURSIVE FUNCTION (FACTORIAL)
-  fmt.Println(factorial(3))
+    fmt.Println(factorial(3))
+    // 3 * factorial(2) == 3 * 2 = 6
+    // 2 * factorial(1) == 2 * 1 = 2
+    // factorial(0) == 1
+
+  // DEFER FUNCTIONS
+  defer printTwo()
+  printOne()
 
 ////////////////////////////////////////////////////
 // NESTED FUNCTIONS VIA ClOSURES
@@ -245,10 +252,6 @@ func main() {
 
   fmt.Println(doubleNum())
   fmt.Println(doubleNum())
-
-
-
-
 
 
 ////////////////////////////////////////////////////
@@ -297,3 +300,10 @@ func factorial(num int) int {
 
   return num * factorial(num - 1)
 }
+
+////////////////////////////////////////////////////
+// DEFER FUNCTION
+////////////////////////////////////////////////////
+
+func printOne(){fmt.Println(1)}
+func printTwo(){fmt.Println(2)}
