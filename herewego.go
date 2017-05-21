@@ -187,15 +187,113 @@ func main() {
 
   numSlice := []int {5, 4, 3, 2, 1}
   numSlice2 := numSlice[3:5]
+  numSlice3 := make([]int, 5, 10)
+  copy(numSlice3, numSlice)
 
   fmt.Println("numSlice2[0] =", numSlice2[0])
   fmt.Println("numSlice2[1] =", numSlice2[1])
   fmt.Println("numSlice[:2] =", numSlice[:2])
+  fmt.Println("numSlice[2:] =", numSlice[2:])
+  fmt.Println("numSlice3[0:] =", numSlice3[0:])
+
+  numSlice3 = append(numSlice3, 0, -1)
+  fmt.Println("numSlice3[6] =", numSlice3[6])
 
 ////////////////////////////////////////////////////
-// SLICES
+// MAPS
 ////////////////////////////////////////////////////
 
+  presAge := make(map[string] int)
+  presAge["TheodoreRoosevelt"] = 42
+  presAge["John F. Kennedy"] = 43
 
-  // END FUNC MAIN
+  fmt.Println("presAge length:", len(presAge))
+  fmt.Println(presAge["TheodoreRoosevelt"])
+
+  delete(presAge, "John F. Kennedy")
+  fmt.Println("presAge length:",len(presAge))
+
+////////////////////////////////////////////////////
+// CALLING FUNCTIONS
+////////////////////////////////////////////////////
+
+  // SIMPLE FUNCTION ADDING ALL ARRAY ELEMENTS
+  listNums := []float64{1,2,3,4,5}
+  fmt.Println("Sum :", addThemUp(listNums))
+
+  // STORE MULTIPLE RETURNED VALUES INTO VARS
+  num1, num2 := next2Values(5)
+  fmt.Println(num1, num2)
+
+  // UNDEFINED NUMBER OF ARGUMENTS
+  fmt.Println(subtractThem(1,2,3,4,5))
+
+  // RECURSIVE FUNCTION (FACTORIAL)
+  fmt.Println(factorial(3))
+
+////////////////////////////////////////////////////
+// NESTED FUNCTIONS VIA ClOSURES
+////////////////////////////////////////////////////
+
+  num3 := 3
+  doubleNum := func() int {
+
+    num3 *= 2
+
+    return num3
+  }
+
+  fmt.Println(doubleNum())
+  fmt.Println(doubleNum())
+
+
+
+
+
+
+////////////////////////////////////////////////////
+// END MAIN FUNCTION: DECLARATIVE ONLY AFTER THIS POINT
+////////////////////////////////////////////////////
+}
+
+
+////////////////////////////////////////////////////
+// CREATING FUNCTIONS
+////////////////////////////////////////////////////
+
+func addThemUp(numbers []float64) float64 { // array type, return type
+  sum := 0.0
+
+  for _, val := range numbers {
+    sum += val // sum = sum + val
+  }
+
+  return sum
+}
+
+func next2Values(number int) (int, int) {
+  return number+1, number+2
+}
+
+func subtractThem(args ...int) int {
+  finalValue := 0
+
+  for _, value := range args {
+    finalValue -= value
+  }
+
+  return finalValue
+}
+
+
+////////////////////////////////////////////////////
+// RECURSIVE FUNCTION
+////////////////////////////////////////////////////
+
+func factorial(num int) int {
+  if num == 0 {
+    return 1
+  }
+
+  return num * factorial(num - 1)
 }
