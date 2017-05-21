@@ -239,8 +239,19 @@ func main() {
   printOne()
 
 
-  fmt.Println(safeDiv(3,0))
-  fmt.Println(safeDiv(3,2))
+  fmt.Println("safeDiv(3,0):", safeDiv(3,0))
+  fmt.Println("safeDiv(3,2):", safeDiv(3,2))
+
+  demPanic()
+
+  // Pointers
+  x := 0
+  changeXVal(x)
+  fmt.Println("x =", x)
+
+  y := 0
+  changeYValNow(&y)
+  fmt.Println("y =", y)
 
 ////////////////////////////////////////////////////
 // NESTED FUNCTIONS VIA ClOSURES
@@ -326,3 +337,27 @@ func safeDiv(num1, num2 int) int{
   return solution
 
 }
+
+////////////////////////////////////////////////////
+// PANIC
+////////////////////////////////////////////////////
+
+  func demPanic(){
+    defer func(){
+      fmt.Println(recover())
+    }()
+
+    panic("PANIC")
+  }
+
+////////////////////////////////////////////////////
+// POINTERS
+////////////////////////////////////////////////////
+
+  func changeXVal(x int) {
+    x = 2
+  }
+
+  func changeYValNow(y *int) {
+    *y = 2
+  }
